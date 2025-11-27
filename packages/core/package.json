@@ -1,0 +1,33 @@
+{
+  "name": "@etz/core",
+  "version": "1.0.0",
+  "description": "Core TypeScript library for Etz git worktree management",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest"
+  },
+  "keywords": ["git", "worktree", "multi-repo", "monorepo", "developer-tools"],
+  "author": "Etz Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etz-dev/etz.git",
+    "directory": "packages/etz-core"
+  },
+  "bugs": {
+    "url": "https://github.com/etz-dev/etz/issues"
+  },
+  "homepage": "https://github.com/etz-dev/etz#readme",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "simple-git": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.0"
+  }
+}

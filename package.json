@@ -1,0 +1,44 @@
+{
+  "name": "etz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Beautiful CLI and desktop app for managing git worktrees across multiple repositories",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "build:core": "npm run build --workspace=@etz/core",
+    "build:cli": "npm run build --workspace=@etz/cli",
+    "build:desktop": "npm run build --workspace=@etz/desktop",
+    "dev:core": "npm run dev --workspace=@etz/core",
+    "dev:cli": "npm run dev --workspace=@etz/cli",
+    "dev:desktop": "npm run dev --workspace=@etz/desktop",
+    "cli": "npm run build:cli && node packages/cli/bin/etz.js",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etz-dev/etz.git"
+  },
+  "keywords": [
+    "git",
+    "worktree",
+    "cli",
+    "desktop-app",
+    "electron",
+    "multi-repo",
+    "monorepo",
+    "developer-tools",
+    "typescript"
+  ],
+  "author": "Etz Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/etz-dev/etz/issues"
+  },
+  "homepage": "https://github.com/etz-dev/etz#readme",
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}

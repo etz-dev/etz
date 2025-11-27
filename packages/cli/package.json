@@ -1,0 +1,48 @@
+{
+  "name": "@etz/cli",
+  "version": "1.0.0",
+  "description": "Beautiful CLI for etz worktree management",
+  "main": "dist/index.js",
+  "bin": {
+    "etz": "./bin/etz.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "git",
+    "worktree",
+    "cli",
+    "etz",
+    "monorepo",
+    "developer-tools"
+  ],
+  "author": "Etz Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etz-dev/etz.git",
+    "directory": "packages/etz-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/etz-dev/etz/issues"
+  },
+  "homepage": "https://github.com/etz-dev/etz#readme",
+  "dependencies": {
+    "@etz/core": "*",
+    "commander": "^12.1.0",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "inquirer": "^8.2.6",
+    "boxen": "^5.1.2",
+    "cli-table3": "^0.6.5",
+    "listr2": "^8.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/inquirer": "^8.2.10",
+    "typescript": "^5.3.0"
+  }
+}
