@@ -1,0 +1,101 @@
+{
+  "name": "@etz/desktop",
+  "version": "1.0.0",
+  "description": "Etz Desktop App - Visual interface for managing git worktrees",
+  "main": "dist-electron/main.cjs",
+  "author": "Etz Team",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/etz-dev/etz.git",
+    "directory": "packages/desktop"
+  },
+  "bugs": {
+    "url": "https://github.com/etz-dev/etz/issues"
+  },
+  "homepage": "https://github.com/etz-dev/etz#readme",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "node build-electron.js && wait-on http://localhost:5173 && NODE_ENV=development npx electron .",
+    "build": "node build-electron.js && vite build && electron-builder --dir",
+    "build:dist": "node build-electron.js && vite build && electron-builder",
+    "build:mac": "npm run build:dist -- --mac",
+    "build:win": "npm run build:dist -- --win",
+    "build:linux": "npm run build:dist -- --linux",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@electron/notarize": "^2.5.0",
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-react": "^5.1.1",
+    "autoprefixer": "^10.4.22",
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.1",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.27.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2",
+    "wait-on": "^9.0.3"
+  },
+  "dependencies": {
+    "@etz/core": "*",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.554.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.4.0"
+  },
+  "build": {
+    "appId": "com.etz.app",
+    "productName": "Etz",
+    "electronVersion": "39.2.1",
+    "icon": "build/icon.png",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "release"
+    },
+    "mac": {
+      "icon": "build/icon.icns",
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "afterSign": "scripts/notarize.js",
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development"
+    }
+  }
+}
